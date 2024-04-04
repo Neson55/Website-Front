@@ -1,11 +1,10 @@
 import { Button } from "@nextui-org/react"
+import { Header } from "./components/header"
 
 const App = () => {
   return (
     <div>
-      <Button color="primary">
-        B1231
-        </Button>
+      <Header />
     </div>
   )
 }
