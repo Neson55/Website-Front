@@ -20,7 +20,7 @@
         "paths": [
           {
             "name": "react-redux",
-            "importNames": ["useStore", "useDispatch"],
+            "importNames": [],
             "message": "Please use pre-typed versions from `src/app/hooks.ts` instead."
           }
         ]

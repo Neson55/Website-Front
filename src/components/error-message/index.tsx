@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ErorMessage = ({
+export const ErrorMessage = ({
     error = ''
 }: {
     error: string;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useLazyCurrentQuery, useLoginMutation } from '../../app/services/userApi';
-import { ErorMessage } from '../../components/error-message';
+import { ErrorMessage } from '../../components/error-message';
 import { Input } from '../../components/input';
 import { hasErrorField } from '../../utils/has-error-field';
 
@@ -60,7 +60,7 @@ export const Login = ({setSelected}: Props) => {
        type="password"
        required='Обязательное поле'
        /> 
-        <ErorMessage error={error}/>
+        <ErrorMessage error={error}/>
        <p className="text-center text-small">
         Нет акаунта?{' '}
         <Link

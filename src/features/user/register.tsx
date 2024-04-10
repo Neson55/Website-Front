@@ -2,7 +2,7 @@ import { Button, Link } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRegisterMutation } from '../../app/services/userApi';
-import { ErorMessage } from '../../components/error-message';
+import { ErrorMessage } from '../../components/error-message';
 import { Input } from '../../components/input';
 import { hasErrorField } from '../../utils/has-error-field';
 
@@ -66,7 +66,7 @@ export const Register: React.FC<Props> = ({setSelected}) => {
                 type="password"
                 required='Обязательное поле'
             />
-            <ErorMessage error={error}/>
+            <ErrorMessage error={error}/>
             <p className="text-center text-small">
                 Уже есть аккаунт?{' '}
                 <Link
