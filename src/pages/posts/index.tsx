@@ -7,7 +7,7 @@ export const Posts = () => {
   const {data} =useGetAllPostsQuery();
   return (
     <>
-    <div className='mb-10 w-full'>
+    <div className='mb-10 w-full flex-col'>
       <CreatePost/>
     </div>
     {
