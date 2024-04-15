@@ -15,7 +15,7 @@ export const Button: React.FC<Props> = ({
     color,
     icon,
     fullWidth,
-    type
+    type,
 }) => {
   return (
     <NextButton

@@ -74,12 +74,12 @@ export const Register: React.FC<Props> = ({setSelected}) => {
                     className='cursor-pointer'
                     onPress={() => setSelected("login")}
                 >
-                    Зарегестрироваться
+                    Войти
                 </Link>
             </p>
             <div className="flex gap-2 justify-end">
                 <Button fullWidth color='primary' type='submit' isLoading={isLoading}>
-                    Войти
+                    Зарегистрироваться
                 </Button>
             </div>
         </form>

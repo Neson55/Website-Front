@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react"
 import { Header } from "./components/header"
 
 const App = () => {

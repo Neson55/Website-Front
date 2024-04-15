@@ -27,7 +27,7 @@ type Props = {
     commentsCount?: number
     createdAt?: Date
     id?: string
-    cardFor: 'comment' | 'post' | 'currentPost'
+    cardFor: 'comment' | 'post' | 'current-post'
     likedByUser?: boolean
 
 }
@@ -60,7 +60,7 @@ export const Card: React.FC<Props> = ({
             case 'post':
                 await triggerGetAllPosts().unwrap();
                 break;
-            case 'currentPost':
+            case 'current-post':
                 await triggerGetAllPosts().unwrap();
                 break
             case 'comment':
@@ -76,7 +76,12 @@ export const Card: React.FC<Props> = ({
                 ? await unlikePost(id).unwrap()
                 : await likePost({ postId: id }).unwrap()
 
-            await refetchPosts();
+                if(cardFor === 'current-post'){
+                await triggerGetPostById(id).unwrap();}
+                
+                if(cardFor === 'post'){
+                await triggerGetAllPosts().unwrap();
+                }
         } catch (error) {
             if (hasErrorField(error)) {
                 setError(error.data.error)
@@ -93,12 +98,12 @@ export const Card: React.FC<Props> = ({
                     await deletePost(id).unwrap();
                     await refetchPosts();
                     break;
-                case 'currentPost':
+                case 'current-post':
                     await deletePost(id).unwrap();
                     navigate('/');
                     break;
                 case 'comment':
-                    await deleteComment(id).unwrap();
+                    await deleteComment(commentId).unwrap();
                     await refetchPosts();
                     break;
                 default:
