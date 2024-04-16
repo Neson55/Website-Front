@@ -1,16 +1,22 @@
+import { 
+         Button,
+         Modal, 
+         ModalBody, 
+         ModalContent, 
+         ModalFooter, 
+         ModalHeader, 
+         Textarea 
+        } from '@nextui-org/react';
 import React, { useContext, useState } from 'react'
-import { User } from '../../app/types';
 import { ThemeContext } from '../theme-provider';
+import { Controller, useForm } from 'react-hook-form';
+import { User } from '../../app/types';
+import { Input } from '../input';
 import { useUpdateUserMutation } from '../../app/services/userApi';
 import { useParams } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea } from '@nextui-org/react';
-import { Input } from '../input';
-import { MdOutlineEmail } from 'react-icons/md';
-import { ErrorMessage } from '../error-message';
 import { hasErrorField } from '../../utils/has-error-field';
-
-
+import { ErrorMessage } from '../error-message';
+import { MdOutlineEmail } from 'react-icons/md';
 
 type Props = {
     isOpen: boolean;
@@ -19,8 +25,8 @@ type Props = {
 }
 
 export const EditProfile: React.FC<Props> = ({
-    isOpen,
-    onClose,
+    isOpen =false,
+    onClose=()=> null ,
     user
 }) => {
     const { theme } = useContext(ThemeContext)
@@ -63,9 +69,10 @@ export const EditProfile: React.FC<Props> = ({
 
                 await updateUser({userData:formData, id}).unwrap();
                 onClose();
-            } catch (error) {
-                if(hasErrorField(error)){
-                    setError(error.data.error)
+            } catch (err) {
+                console.log(err)
+            if (hasErrorField(err)) {
+            setError(err.data.error)
                 }
             }
         }
@@ -75,7 +82,8 @@ export const EditProfile: React.FC<Props> = ({
         <Modal
             isOpen={isOpen}
             onClose={onClose}
-            className={`${theme} text-foregroud`}
+            className={`${theme} text-foreground`}
+            backdrop="blur"
         >
             <ModalContent>
                 {
@@ -111,7 +119,7 @@ export const EditProfile: React.FC<Props> = ({
                                         name='dateOfBirth'
                                         label='Дата Рождения'
                                         type='date'
-                                        placeholder='Дата Рождения'
+                                        placeholder='Мой'
                                     />
                                     <Controller
                                         name='bio'
@@ -138,7 +146,7 @@ export const EditProfile: React.FC<Props> = ({
                                           type='submit'
                                           isLoading={isLoading}
                                           >
-                                            Обновите профиль
+                                            Обновить профиль
                                         </Button>
                                     </div>
                                 </form>
@@ -155,3 +163,5 @@ export const EditProfile: React.FC<Props> = ({
         </Modal>
     )
 }
+
+

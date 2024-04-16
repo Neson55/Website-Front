@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetPostByIdQuery } from '../../app/services/postsApi'
 import { Card } from '../../components/card'
@@ -29,11 +28,11 @@ export const CurrentPost = () => {
     <GoBack/>
       <Card
         cardFor='current-post'
-        avatarUrl={author.avatarUrl ?? ''}
+        avatarUrl={author?.avatarUrl ?? ''}
         content={content}
-        name={author.name ?? ''}
+        name={author?.name ?? ''}
         likesCount={likes.length}
-        commentsCount={comments.length}
+        commentsCount={comments?.length}
         authorId={authorId}
         id={id}
         likedByUser={likedByUser}
