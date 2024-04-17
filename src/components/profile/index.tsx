@@ -1,10 +1,9 @@
-import React from 'react'
-import { selectCurent } from '../../features/user/UserSlice'
-import { useSelector } from 'react-redux'
-import { Card, CardBody, CardHeader, Image } from '@nextui-org/react'
-import { BASE_URL } from '../../constans'
-import { Link } from 'react-router-dom'
-import { MdAlternateEmail } from 'react-icons/md'
+import { Card, CardHeader, CardBody, Image } from "@nextui-org/react"
+import { useSelector } from "react-redux"
+import { selectCurent } from "../../features/user/UserSlice"
+import { MdAlternateEmail } from "react-icons/md"
+import { BASE_URL } from "../../constans"
+import { Link } from "react-router-dom"
 
 export const Profile = () => {
   const current = useSelector(selectCurent)
